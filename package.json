@@ -1,0 +1,26 @@
+{
+  "name": "@razvanz/inventory-fifo",
+  "version": "0.0.1",
+  "description": "Inventory system managing resources in a FIFO method",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "keywords": [
+    "inventory",
+    "fifo"
+  ],
+  "author": "Razvan Laurus <razvan.laurus@gmail.com>",
+  "license": "SEE LICENSE IN LICENSE",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/razvanz/inventory-fifo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/razvanz/inventory-fifo/issues"
+  },
+  "homepage": "https://github.com/razvanz/inventory-fifo#readme"
+}
