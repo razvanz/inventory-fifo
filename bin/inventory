@@ -1,0 +1,39 @@
+#!/usr/bin/env node
+/*eslint no-sync: 0, no-console:0, global-require: 0*/
+
+'use strict';
+
+const chalk = require('chalk');
+const program = require('commander');
+
+process.on('uncaughtException', (err) => {
+  // Making sure we catch all exception for debuging purposes
+  console.log(chalk.red('Uncaught Exception: %s\n%s'), err.message, err.stack);
+  process.exit(1);
+});
+
+const packageInfo = require('../package.json');
+const Config = require('../Config');
+const server = require('../server');
+
+program
+  .description('Starts FIFO Inventory API server')
+  .version(packageInfo.version)
+  .option('--config-file [filePath]', 'Configuration file')
+  .option('--host [hostname]', 'Hostname / IP the server will listen to')
+  .option('--port [port]', 'Port on which the server will listen to')
+  .option('--db-hosts [ip[,ip]]', 'Database hosts')
+  .option('--log', 'Morgan req/res logging')
+  .parse(process.argv);
+
+
+const config = new Config(program);
+const app = server(config);
+app.listen((err) => {
+  if (err)
+    throw err;
+
+  console.log(`\n${chalk.bold.bgGreen('Inventory server started')}`);
+  console.log(`Host:\t\t\t\t${chalk.bold.green(config.host)}`);
+  console.log(`Port:\t\t\t\t${chalk.bold.green(config.port)}\n`);
+});
