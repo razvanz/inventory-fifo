@@ -1,7 +1,7 @@
 {
   "name": "@razvanz/inventory-fifo",
   "version": "0.0.1",
-  "description": "Inventory system managing resources in a FIFO method",
+  "description": "Inventory system managing resources in a FIFO method as a seneca plugin",
   "main": "index.js",
   "scripts": {
     "test": "mocha test"
