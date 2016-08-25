@@ -175,7 +175,7 @@ class Inventory {
       );
 
     // Ignore unit price for rm operations.
-    if (args.body.operation === 'rm')
+    if (args.cmd === 'rm')
       return cb(null);
 
     if (isNaN(args.body.unit_price) || !isFinite(args.body.unit_price) ||

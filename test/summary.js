@@ -52,27 +52,27 @@ describe('Inventory summary', () => {
       return async.waterfall([
         seneca.act.bind(seneca, _.assign({}, baseArgs, {
           cmd: 'add',
-          body: {operation: 'add', quantity: 100, unit_price: 10}
+          body: {quantity: 100, unit_price: 10}
         })),
         seneca.act.bind(seneca, _.assign({}, baseArgs, {
           cmd: 'rm',
-          body: {operation: 'rm', quantity: 50}
+          body: {quantity: 50}
         })),
         seneca.act.bind(seneca, _.assign({}, baseArgs, {
           cmd: 'add',
-          body: {operation: 'add', quantity: 250, unit_price: 15}
+          body: {quantity: 250, unit_price: 15}
         })),
         seneca.act.bind(seneca, _.assign({}, baseArgs, {
           cmd: 'rm',
-          body: {operation: 'rm', quantity: 225}
+          body: {quantity: 225}
         })),
         seneca.act.bind(seneca, _.assign({}, baseArgs, {
           cmd: 'add',
-          body: {operation: 'add', quantity: 150, unit_price: 12.5}
+          body: {quantity: 150, unit_price: 12.5}
         })),
         seneca.act.bind(seneca, _.assign({}, baseArgs, {
           cmd: 'rm',
-          body: {operation: 'rm', quantity: 50}
+          body: {quantity: 50}
         }))
       ], done);
     });

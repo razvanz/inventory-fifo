@@ -34,7 +34,6 @@ describe('Inventory add', () => {
   it('must return error for invalid quantity', (done) => {
     seneca.act(_.assign({}, baseArgs, {
       body: {
-        operation: 'add',
         quantity: 'asdas',
         unit_price: 10
       }
@@ -49,7 +48,6 @@ describe('Inventory add', () => {
   it('must return error for negative quantity', (done) => {
     seneca.act(_.assign({}, baseArgs, {
       body: {
-        operation: 'add',
         quantity: -100,
         unit_price: 10
       }
@@ -64,7 +62,6 @@ describe('Inventory add', () => {
   it('must return error for invalid unit_price', (done) => {
     seneca.act(_.assign({}, baseArgs, {
       body: {
-        operation: 'add',
         quantity: 100,
         unit_price: 'asd'
       }
@@ -79,7 +76,6 @@ describe('Inventory add', () => {
   it('must return error for negative unit_price', (done) => {
     seneca.act(_.assign({}, baseArgs, {
       body: {
-        operation: 'add',
         quantity: 100,
         unit_price: -10
       }
@@ -94,7 +90,6 @@ describe('Inventory add', () => {
   it('must add correct log and summary entries', (done) => {
     seneca.act(_.assign({}, baseArgs, {
       body: {
-        operation: 'add',
         quantity: 100,
         unit_price: 10
       }

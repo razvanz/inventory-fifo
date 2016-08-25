@@ -34,7 +34,6 @@ describe('Inventory rm', () => {
   it('must return error for invalid quantity', (done) => {
     seneca.act(_.assign({}, baseArgs, {
       body: {
-        operation: 'rm',
         quantity: 'asdas'
       }
     }), (err) => {
@@ -48,7 +47,6 @@ describe('Inventory rm', () => {
   it('must return error for negative quantity', (done) => {
     seneca.act(_.assign({}, baseArgs, {
       body: {
-        operation: 'rm',
         quantity: -100
       }
     }), (err) => {
@@ -76,7 +74,6 @@ describe('Inventory rm', () => {
     it('must rm correct ammount', (done) => {
       seneca.act(_.assign({}, baseArgs, {
         body: {
-          operation: 'rm',
           quantity: 200
         }
       }), (err) => {
