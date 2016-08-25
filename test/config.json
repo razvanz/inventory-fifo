@@ -1,0 +1,6 @@
+{
+  "db": {
+    "contactPoints": ["52.58.17.39"],
+    "keyspace": "inventory_test"
+  }
+}
