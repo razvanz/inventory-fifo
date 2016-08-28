@@ -45,7 +45,7 @@ module.exports = function (config) {
      return res.send('pong');
    });
 
-  app.route('/customer/:customer_id/product/:prd_id')
+  app.route('/customer/:cust_id/product/:prd_id')
     .put((req, res, next) => {
       seneca.act({role: 'inventory', cmd: req.body.operation}, {
         params: req.params,
@@ -58,7 +58,7 @@ module.exports = function (config) {
       });
     });
 
-  app.route('/customer/:customer_id/product/:prd_id/summary')
+  app.route('/customer/:cust_id/product/:prd_id/summary')
     .get((req, res, next) => {
       seneca.act({role: 'inventory', cmd: 'summary'}, {
         params: req.params,
@@ -71,7 +71,7 @@ module.exports = function (config) {
       });
     });
 
-  app.route('/customer/:customer_id/product/:prd_id/log')
+  app.route('/customer/:cust_id/product/:prd_id/log')
     .get((req, res, next) => {
       seneca.act({role: 'inventory', cmd: 'log'}, {
         params: req.params,

@@ -6,7 +6,7 @@ Inventory system managing resources in a FIFO method as a seneca plugin.
 Abstract
 --------
 
-All inventory data is partitioned by a `customer_id` and a `prd_id` (product id). They have been defined as `uuid`'s, something that can always be changed.
+All inventory data is partitioned by a `cust_id` and a `prd_id` (product id). They have been defined as `uuid`'s, something that can always be changed.
 
 Prerequisites
 -------------
@@ -32,7 +32,7 @@ seneca.use(inventory, {
 seneca.act({
   role:'inventory',
   cmd:'add',
-  params: { customer_id: '...', prd_id: '...' },
+  params: { cust_id: '...', prd_id: '...' },
   body: { quantity: 100, unit_price: 10 }
 }, (err) => {});
 
@@ -40,7 +40,7 @@ seneca.act({
 seneca.act({
   role:'inventory',
   cmd:'rm',
-  params: { customer_id: '...', prd_id: '...' },
+  params: { cust_id: '...', prd_id: '...' },
   body: { quantity: 100 }
 }, (err) => {});
 
@@ -48,14 +48,14 @@ seneca.act({
 seneca.act({
   role:'inventory',
   cmd:'summary',
-  params: { customer_id: '...', prd_id: '...' }
+  params: { cust_id: '...', prd_id: '...' }
 }, (err, summary) => {});
 
 // Get product inventory activity (audit)
 seneca.act({
   role:'inventory',
   cmd:'log',
-  params: { customer_id: '...', prd_id: '...' }
+  params: { cust_id: '...', prd_id: '...' }
 }, (err, logs) => {});
 ```
 

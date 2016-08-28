@@ -20,7 +20,7 @@ const baseArgs = {
   role: 'inventory',
   cmd: 'summary',
   params: {
-    customer_id: uuid.v4(),
+    cust_id: uuid.v4(),
     prd_id: uuid.v4()
   }
 };
@@ -39,8 +39,8 @@ describe('Inventory summary', () => {
       assert.lengthOf(summary.available, 0);
       assert.equal(summary.available_quantity, 0);
       assert.equal(summary.available_value, 0);
-      assert.equal(summary.sold_quantity, 0);
-      assert.equal(summary.sold_value, 0);
+      assert.equal(summary.rm_quantity, 0);
+      assert.equal(summary.rm_value, 0);
       assert.equal(summary.total_quantity, 0);
       assert.equal(summary.total_value, 0);
       done();
@@ -89,8 +89,8 @@ describe('Inventory summary', () => {
         assert.equal(summary.available[1].unit_price, 12.5);
         assert.equal(summary.available_quantity, 175);
         assert.equal(summary.available_value, 2250);
-        assert.equal(summary.sold_quantity, 325);
-        assert.equal(summary.sold_value, 4375);
+        assert.equal(summary.rm_quantity, 325);
+        assert.equal(summary.rm_value, 4375);
         assert.equal(summary.total_quantity, 500);
         assert.equal(summary.total_value, 6625);
 

@@ -48,14 +48,13 @@ class Inventory {
 
         // Create log entry
         const logData = {
-          customer_id: summary.customer_id,
+          cust_id: summary.cust_id,
           prd_id: summary.prd_id,
           operation: 'add',
           records: [{
             quantity: args.body.quantity,
             unit_price: args.body.unit_price
-          }],
-          info: null
+          }]
         };
 
         return db.updateInventory({
@@ -78,20 +77,20 @@ class Inventory {
           return cb(new InventoryError('ENOTAVAILABLE'));
 
         // Create summary update
-        const soldRecords = [];
+        const rmRecords = [];
         const summaryData = _.assign({}, summary);
         // Remove from available using FIFO method
         while (args.body.quantity > 0) {
           const entry = summaryData.available.splice(0, 1)[0];
 
           if (args.body.quantity < entry.quantity) {
-            soldRecords.push({
+            rmRecords.push({
               quantity: args.body.quantity,
               unit_price: entry.unit_price
             });
 
-            summaryData.sold_quantity += args.body.quantity;
-            summaryData.sold_value += args.body.quantity * entry.unit_price;
+            summaryData.rm_quantity += args.body.quantity;
+            summaryData.rm_value += args.body.quantity * entry.unit_price;
             summaryData.available_quantity -= args.body.quantity;
             summaryData.available_value -=
               args.body.quantity * entry.unit_price;
@@ -100,15 +99,15 @@ class Inventory {
             summaryData.available.unshift(entry);
             args.body.quantity = 0;
           } else {
-            soldRecords.push({
+            rmRecords.push({
               quantity: entry.quantity,
               unit_price: entry.unit_price
             });
 
             summaryData.available_quantity -= entry.quantity;
-            summaryData.sold_quantity += entry.quantity;
+            summaryData.rm_quantity += entry.quantity;
             summaryData.available_value -= entry.quantity * entry.unit_price;
-            summaryData.sold_value += entry.quantity * entry.unit_price;
+            summaryData.rm_value += entry.quantity * entry.unit_price;
 
             args.body.quantity -= entry.quantity;
           }
@@ -116,11 +115,10 @@ class Inventory {
 
         // Create log entry
         const logData = {
-          customer_id: args.params.customer_id,
+          cust_id: args.params.cust_id,
           prd_id: args.params.prd_id,
           operation: 'rm',
-          records: soldRecords,
-          info: null
+          records: rmRecords
         };
 
         return db.updateInventory({
@@ -263,8 +261,8 @@ class Inventory {
       available: [],
       available_quantity: 0,
       available_value: 0,
-      sold_quantity: 0,
-      sold_value: 0,
+      rm_quantity: 0,
+      rm_value: 0,
       total_quantity: 0,
       total_value: 0
     };
