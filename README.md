@@ -3,11 +3,6 @@ Inventory FIFO
 
 Inventory system managing resources in a FIFO method as a seneca plugin.
 
-Abstract
---------
-
-All inventory data is partitioned by a `cust_id` and a `prd_id` (product id). They have been defined as `uuid`'s, something that can always be changed.
-
 Prerequisites
 -------------
 
