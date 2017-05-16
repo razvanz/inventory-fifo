@@ -1,6 +1,8 @@
 Inventory FIFO
 ==============
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/razvanz/inventory-fifo.svg)](https://greenkeeper.io/)
+
 Inventory system managing resources in a FIFO method as a seneca plugin.
 
 Prerequisites
