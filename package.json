@@ -28,7 +28,7 @@
     "async": "^2.0.1",
     "cassandra-driver": "^3.1.1",
     "lodash": "^4.15.0",
-    "seneca": "^2.1.0"
+    "seneca": "^3.3.0"
   },
   "devDependencies": {
     "body-parser": "^1.15.2",
@@ -39,6 +39,6 @@
     "http-errors": "^1.5.0",
     "mocha": "^3.0.2",
     "morgan": "^1.7.0",
-    "uuid": "^2.0.2"
+    "uuid": "^3.0.1"
   }
 }
